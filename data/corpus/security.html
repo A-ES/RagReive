@@ -1,0 +1,11 @@
+<!doctype html>
+<html>
+  <body>
+    <h1>Security Notes</h1>
+    <p>API keys must be supplied through environment variables and must not be committed to source control.</p>
+    <h2>Request IDs</h2>
+    <p>Every request receives a UUID request ID that is returned in the response headers and error payloads.</p>
+    <h2>Validation</h2>
+    <p>Pydantic validation errors are returned as HTTP 422 responses.</p>
+  </body>
+</html>

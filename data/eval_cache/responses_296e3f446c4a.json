@@ -1,0 +1,8 @@
+{
+  "chunking_strategy": "structural",
+  "retrieval_mode": "hybrid",
+  "correctness": 0.892,
+  "faithfulness": 0.932,
+  "context_relevance": 0.912,
+  "citation_accuracy": 0.922
+}

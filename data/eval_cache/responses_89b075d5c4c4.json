@@ -1,0 +1,8 @@
+{
+  "chunking_strategy": "structural",
+  "retrieval_mode": "dense-only",
+  "correctness": 0.812,
+  "faithfulness": 0.852,
+  "context_relevance": 0.832,
+  "citation_accuracy": 0.842
+}

@@ -1,0 +1,11 @@
+Question: What is the default chunking strategy?
+Answer: The default chunking strategy is structural.
+
+Question: Why does the project use RRF?
+Answer: Reciprocal Rank Fusion combines dense and sparse rankings without normalizing incompatible score scales.
+
+Question: What happens when retrieved chunks are below the relevance threshold?
+Answer: The generator returns "I don't know based on the available context."
+
+Question: Which vector database is used?
+Answer: Qdrant stores embeddings and chunk payload metadata.

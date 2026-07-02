@@ -1,0 +1,107 @@
+[build-system]
+requires = ["setuptools>=72.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hybrid-rag-pipeline"
+version = "0.1.0"
+description = "Production-grade Hybrid RAG pipeline with dense + sparse retrieval, RRF fusion, reranking, and citation verification"
+requires-python = ">=3.11"
+
+dependencies = [
+    # Web framework
+    "fastapi==0.115.6",
+    "uvicorn[standard]==0.32.1",
+    "python-multipart==0.0.20",
+    "markdown==3.7",
+    "chardet==5.2.0",
+
+    # Vector store
+    "qdrant-client==1.12.1",
+
+    # Sparse retrieval
+    "rank-bm25==0.2.2",
+
+    # Embeddings and reranking
+    "sentence-transformers==3.3.1",
+
+    # LLM API
+    "openai==1.58.1",
+
+    # Document parsing
+    "pdfplumber==0.11.4",
+    "pypdf==5.1.0",
+    "beautifulsoup4==4.12.3",
+    "markdownify==0.13.1",
+
+    # Chunking
+    "langchain==0.3.13",
+    "langchain-text-splitters==0.3.3",
+
+    # Configuration and validation
+    "pydantic==2.10.4",
+    "pydantic-settings==2.7.0",
+
+    # Dashboard
+    "streamlit==1.41.1",
+
+    # HTTP client (dashboard → API calls)
+    "httpx==0.28.1",
+
+    # Numerics
+    "numpy==2.2.1",
+
+    # Evaluation metrics
+    "rouge-score==0.1.2",
+    "matplotlib==3.10.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==8.3.4",
+    "pytest-asyncio==0.25.0",
+    "hypothesis==6.123.1",
+    "ruff==0.9.1",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ingestion*", "retrieval*", "generation*", "eval*", "api*", "dashboard*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+exclude = [
+    ".git",
+    ".kiro",
+    "__pycache__",
+    "*.egg-info",
+    ".venv",
+    "venv",
+    "dist",
+    "build",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+]
+ignore = [
+    "E501",  # line too long — handled by formatter
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["ingestion", "retrieval", "generation", "eval", "api", "dashboard"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
